@@ -1,0 +1,20 @@
+= JekyllTask
+
+A task to run Jekyll on your project.
+
+= Usage
+
+In your rakefile, add those instructions:
+
+ JekyllTask.new :jekyll do |task|
+   task.source = 'doc'
+   task.target = '_site'
+ end
+ 
+= Contributors
+
+This task comes from Apache Buildr, and was ported to an individual gem by Antoine Toulme.
+
+= License
+
+JekyllTask is licensed under ASL 2.0. See the LICENSE file.
