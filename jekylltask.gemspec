@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 A Rake task to run jekyll over your textile files.
   TEXT
 
-  spec.files          = Dir['lib/**/*', '*.{gemspec}', 'LICENSE']
+  spec.files          = Dir['lib/**/*', '*.{gemspec}', 'LICENSE', 'README.rdoc']
                         
   # Tested against these dependencies.
   spec.add_dependency 'rake',                 '>= 0.8.7'
