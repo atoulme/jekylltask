@@ -1,0 +1,7 @@
+= 1.0.2
+* Remove the monkey-patching since it's pretty ancient.
+= 1.0.1
+* Wrong jekyll dependency version, and no way to remove the 1.0.
+= 1.0
+* Initial release
+* Rake task for generating with jekyll a textile.
