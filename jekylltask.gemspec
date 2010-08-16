@@ -28,5 +28,5 @@ A Rake task to run jekyll over your textile files.
                         
   # Tested against these dependencies.
   spec.add_dependency 'rake',                 '>= 0.8.7'
-  spec.add_dependency 'jekyll',               '>= 0.6.3'
+  spec.add_dependency 'jekyll',               '>= 0.6.2'
 end
