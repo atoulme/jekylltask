@@ -43,10 +43,6 @@ class JekyllTask < Rake::TaskLib
   attr_accessor :auto
 
   def generate
-    options = { 'source'=>source, 'destination'=>target }
-    options = Jekyll.configuration(options)
-    site = Jekyll::Site.new(options)
-
     if self.auto
       require 'directory_watcher'
       puts "Auto generating: just edit a page and save, watch the console to see when we're done regenerating pages"
@@ -59,6 +55,7 @@ class JekyllTask < Rake::TaskLib
         dirs += ['*']
       end
       dw.start
+      site = init_jekyll
       dw.add_observer do |*args|
         t = Time.now.strftime("%Y-%m-%d %H:%M:%S")
         puts "[#{t}] regeneration: #{args.size} files changed"
@@ -68,9 +65,16 @@ class JekyllTask < Rake::TaskLib
       loop { sleep 1 }
     else
       puts "Generating documentation in #{target}"
+      site = init_jekyll
       site.process
       touch target
     end
+  end
+
+  def init_jekyll
+    options = {'source' => self.source, 'destination' => self.target}
+    options = Jekyll.configuration(options)
+    Jekyll::Site.new(options)
   end
 end
 
