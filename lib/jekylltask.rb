@@ -20,10 +20,12 @@ require 'jekyll'
 class JekyllTask < Rake::TaskLib
   def initialize(name=:jekyll)  # :yield: self
     @name = name
-    @source = name
-    @target = name
+    @source = nil
+    @target = nil
     @auto = false
     yield self if block_given?
+    raise "User must specify source directory" unless self.source
+    raise "User must specify target directory" unless self.target
     task name, :auto, :needs=>[@source] do |task, args|
       generate
     end
