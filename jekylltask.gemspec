@@ -25,8 +25,13 @@ A Rake task to run jekyll over your textile files.
   TEXT
 
   spec.files          = Dir['lib/**/*', '*.{gemspec}', 'LICENSE', 'README.rdoc']
+
+  # Rakefile needs to create spec for both platforms (ruby and java), using the
+  # $platform global variable.  In all other cases, we figure it out from RUBY_PLATFORM.
+  spec.platform       = $platform || RUBY_PLATFORM[/java/] || 'ruby'
                         
   # Tested against these dependencies.
   spec.add_dependency 'rake',                 '>= 0.8.7'
-  spec.add_dependency 'jekyll',               '>= 0.6.2'
+  spec.add_dependency 'jekyll',               '>= 0.6.2' unless spec.platform.to_s == 'java'
+  spec.add_dependency 'realityforge-jekyll',  '>= 0.7.1' if spec.platform.to_s == 'java'
 end
