@@ -36,6 +36,7 @@ class JekyllTask < Rake::TaskLib
     end
   end
 
+  attr_reader :name
   attr_accessor :source
   attr_accessor :target
 
