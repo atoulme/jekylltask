@@ -46,9 +46,9 @@ class JekyllTask < Rake::TaskLib
     if self.auto
       require 'directory_watcher'
       puts "Auto generating: just edit a page and save, watch the console to see when we're done regenerating pages"
-      dw = DirectoryWatcher.new(source)
+      dw = DirectoryWatcher.new(self.source)
       dw.interval = 1
-      dw.glob = Dir.chdir(source) do
+      dw.glob = Dir.chdir(self.source) do
         dirs = Dir['*'].select { |x| File.directory?(x) }
         dirs -= [target]
         dirs = dirs.map { |x| "#{x}/**/*" }
@@ -64,10 +64,10 @@ class JekyllTask < Rake::TaskLib
       end
       loop { sleep 1 }
     else
-      puts "Generating documentation in #{target}"
+      puts "Generating documentation in #{self.target}"
       site = init_jekyll
       site.process
-      touch target
+      touch self.target
     end
   end
 
