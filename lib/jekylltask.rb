@@ -22,9 +22,10 @@ class JekyllTask < Rake::TaskLib
     @name = name
     @source = name
     @target = name
+    @auto = false
     yield self if block_given?
     task name, :auto, :needs=>[@source] do |task, args|
-      generate args.auto
+      generate
     end
     if @source != @target
       file @target=>FileList["#{@source}/**/*"] do
@@ -39,13 +40,14 @@ class JekyllTask < Rake::TaskLib
   attr_reader :name
   attr_accessor :source
   attr_accessor :target
+  attr_accessor :auto
 
-  def generate(auto = false)
+  def generate
     options = { 'source'=>source, 'destination'=>target }
     options = Jekyll.configuration(options)
     site = Jekyll::Site.new(options)
 
-    if auto
+    if self.auto
       require 'directory_watcher'
       puts "Auto generating: just edit a page and save, watch the console to see when we're done regenerating pages"
       dw = DirectoryWatcher.new(source)
