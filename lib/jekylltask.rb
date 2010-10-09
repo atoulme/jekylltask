@@ -16,7 +16,6 @@
 require 'rake/tasklib'
 require 'jekyll'
 
-
 class JekyllTask < Rake::TaskLib
   def initialize(name)  # :yield: self
     @name = name
