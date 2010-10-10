@@ -15,7 +15,7 @@
 
 Gem::Specification.new do |spec|
   spec.name           = 'jekylltask'
-  spec.version        = '1.0.2'
+  spec.version        = '1.0.3'
   spec.author         = 'Jekyll Rake Task'
   spec.email          = "antoine@lunar-ocean.com"
   spec.homepage       = "http://www.github.com/atoulme/jekylltask"
