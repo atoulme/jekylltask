@@ -1,3 +1,9 @@
+= 1.0.3
+* Make it easier to configure the name, the "auto" flag and the description of task. Add accessors for properties.
+* Support running the task under jruby.
+* Defer initialization of Jekyll until it is actually used.
+* Load liquid dependency with warnings disabled to avoid duplicate constant warnings in latest version of liquid.
+* Require the user to explicitly name task.
 = 1.0.2
 * Remove the monkey-patching since it's pretty ancient.
 = 1.0.1
